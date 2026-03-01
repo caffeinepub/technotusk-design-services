@@ -1,0 +1,189 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --radius: 0.25rem;
+
+    /* Technotusk: Dark Navy + Burnt Orange palette */
+    --background: 0.12 0.01 240;
+    --foreground: 0.96 0.005 60;
+    --card: 0.16 0.015 240;
+    --card-foreground: 0.96 0.005 60;
+    --popover: 0.18 0.015 240;
+    --popover-foreground: 0.96 0.005 60;
+
+    /* Orange accent as primary */
+    --primary: 0.68 0.19 45;
+    --primary-foreground: 0.1 0 0;
+
+    --secondary: 0.22 0.02 240;
+    --secondary-foreground: 0.96 0.005 60;
+    --muted: 0.2 0.015 240;
+    --muted-foreground: 0.6 0.01 240;
+    --accent: 0.68 0.19 45;
+    --accent-foreground: 0.1 0 0;
+    --destructive: 0.577 0.245 27.325;
+    --destructive-foreground: 0.985 0 0;
+    --border: 0.28 0.02 240;
+    --input: 0.25 0.02 240;
+    --ring: 0.68 0.19 45;
+    --chart-1: 0.68 0.19 45;
+    --chart-2: 0.6 0.118 184.704;
+    --chart-3: 0.398 0.07 227.392;
+    --chart-4: 0.828 0.189 84.429;
+    --chart-5: 0.769 0.188 70.08;
+    --sidebar: 0.14 0.01 240;
+    --sidebar-foreground: 0.96 0.005 60;
+    --sidebar-primary: 0.68 0.19 45;
+    --sidebar-primary-foreground: 0.1 0 0;
+    --sidebar-accent: 0.22 0.02 240;
+    --sidebar-accent-foreground: 0.96 0.005 60;
+    --sidebar-border: 0.28 0.02 240;
+    --sidebar-ring: 0.68 0.19 45;
+
+    /* Brand tokens */
+    --brand-orange: 0.68 0.19 45;
+    --brand-orange-light: 0.75 0.18 50;
+    --brand-navy: 0.12 0.01 240;
+    --brand-navy-mid: 0.18 0.015 240;
+    --brand-steel: 0.4 0.03 220;
+    --brand-text: 0.96 0.005 60;
+    --brand-muted: 0.65 0.015 220;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Cabinet Grotesk', 'Outfit', ui-sans-serif, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Custom brand utility classes */
+@layer utilities {
+  .text-brand-orange {
+    color: oklch(var(--brand-orange));
+  }
+  .bg-brand-orange {
+    background-color: oklch(var(--brand-orange));
+  }
+  .bg-brand-navy {
+    background-color: oklch(var(--brand-navy));
+  }
+  .bg-brand-navy-mid {
+    background-color: oklch(var(--brand-navy-mid));
+  }
+  .border-brand-orange {
+    border-color: oklch(var(--brand-orange));
+  }
+  .text-brand-muted {
+    color: oklch(var(--brand-muted));
+  }
+  .from-brand-orange {
+    --tw-gradient-from: oklch(var(--brand-orange));
+  }
+  .to-brand-orange {
+    --tw-gradient-to: oklch(var(--brand-orange));
+  }
+
+  .section-padding {
+    @apply py-20 md:py-28;
+  }
+
+  .heading-display {
+    font-family: 'Bricolage Grotesque', 'Cabinet Grotesk', ui-sans-serif, system-ui, sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+  }
+
+  .heading-section {
+    font-family: 'Bricolage Grotesque', 'Cabinet Grotesk', ui-sans-serif, system-ui, sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    line-height: 1.1;
+  }
+
+  .glass-nav {
+    background: oklch(0.12 0.01 240 / 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid oklch(0.28 0.02 240 / 0.5);
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-7 py-3.5 font-semibold text-sm tracking-wide uppercase;
+    background: oklch(var(--brand-orange));
+    color: oklch(0.1 0 0);
+    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+    transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+  }
+  .btn-primary:hover {
+    background: oklch(var(--brand-orange-light));
+    transform: translateY(-1px);
+    box-shadow: 0 8px 32px oklch(var(--brand-orange) / 0.4);
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 px-7 py-3.5 font-semibold text-sm tracking-wide uppercase;
+    background: transparent;
+    color: oklch(var(--brand-text));
+    border: 1.5px solid oklch(var(--brand-text) / 0.4);
+    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+    transition: border-color 0.2s ease, color 0.2s ease, transform 0.15s ease;
+  }
+  .btn-secondary:hover {
+    border-color: oklch(var(--brand-orange));
+    color: oklch(var(--brand-orange));
+    transform: translateY(-1px);
+  }
+
+  .stat-counter {
+    font-family: 'Bricolage Grotesque', 'Cabinet Grotesk', ui-sans-serif, system-ui, sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+  }
+
+  /* Diagonal grid decoration */
+  .steel-grid {
+    background-image:
+      linear-gradient(oklch(0.4 0.03 220 / 0.07) 1px, transparent 1px),
+      linear-gradient(90deg, oklch(0.4 0.03 220 / 0.07) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  /* Orange underline accent */
+  .title-underline {
+    position: relative;
+    display: inline-block;
+  }
+  .title-underline::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 60%;
+    height: 3px;
+    background: oklch(var(--brand-orange));
+  }
+
+  /* Angled section divider */
+  .section-skew {
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 4vw), 0 100%);
+  }
+
+  .section-skew-reverse {
+    clip-path: polygon(0 4vw, 100% 0, 100% 100%, 0 100%);
+  }
+}
